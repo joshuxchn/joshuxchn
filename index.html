@@ -74,6 +74,26 @@
       margin-right: 1.2em;
     }
 
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 24px;
+      display: flex;
+      gap: 1em;
+      font-size: 15px;
+    }
+
+    nav a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      opacity: 0.5;
+    }
+
     @media (max-width: 480px) {
       main {
         padding: 12vh 20px 8vh;
@@ -90,6 +110,10 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">home</a>
+    <a href="blog.html">blog</a>
+  </nav>
   <main>
     <h1>Hi, I'm Joshua Chen</h1>
 
@@ -100,7 +124,7 @@
         I’m a student, engineer, and researcher pursuing BS Computer Science + Statistics at UIUC. Based in Seattle, Washington and Champaign, Illinois
     </p>
 
-    <h3>Currently I am:</h3>
+    <h3>curr->:</h3>
     <ol>
       <li>Engineering <a href="https://pyhealth.dev/">PyHealth</a>. Maintaining open source repo and building multimodal clinical prediction pipeline.
         <ol>
@@ -115,18 +139,22 @@
     <p></p>
     <p></p>
     <p></p>
-    <h3>Previously I:</h3>
+    <h3>prev->:</h3>
     <ol>
-      <li>Won CalHacks 2026 developer track</li>
+      <li>1st place CalHacks 2025 developer track</li>
       <li>Researched hallucination interpretability and alignment at OnCARE lab</li>
       <li>Produced popular discord bot BananaBot (70+ servers)</li>
       <li>Taught CS124 as a course assistant</li>
     </ol>
-    <!-- <h3>Projects:</h3>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h3>misc:</h3>
     <ol>
-      <li>Merj (calhacks)</li>
-    </ol> -->
-
+      <li>Off-piste skier, v5 climber, Ex-EA soccer midfielder</li>
+    </ol>
   </main>
 </body>
 </html>
