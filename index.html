@@ -74,6 +74,19 @@
       margin-right: 1.2em;
     }
 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2em;
+    }
+
+    .profile-pic {
+      width: clamp(200px, 22vw, 240px);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -94,6 +107,74 @@
       opacity: 0.5;
     }
 
+    .contrib {
+      display: none;
+      margin: 1em 0 2.5em;
+    }
+
+    .contrib-scroll {
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .contrib-months {
+      position: relative;
+      height: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .contrib-months span {
+      position: absolute;
+      top: 0;
+    }
+
+    .contrib-grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: repeat(7, 11px);
+      grid-auto-columns: 11px;
+      gap: 3px;
+    }
+
+    .contrib-cell {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+    }
+
+    .contrib-cell[data-level="0"] { background: #ececec; }
+    .contrib-cell[data-level="1"] { background: #98bd98; }
+    .contrib-cell[data-level="2"] { background: #73a074; }
+    .contrib-cell[data-level="3"] { background: #548255; }
+    .contrib-cell[data-level="4"] { background: #376439; }
+
+    .contrib-caption {
+      font-size: 15px;
+      color: #888;
+      margin-top: 0.6em;
+      margin-bottom: 0;
+    }
+
+    .contrib-caption a {
+      color: #888;
+    }
+
+    #contrib-tooltip {
+      position: fixed;
+      display: none;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 14px;
+      color: #2a2a2a;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      z-index: 10;
+    }
+
     @media (max-width: 480px) {
       main {
         padding: 12vh 20px 8vh;
@@ -106,25 +187,46 @@
       body {
         font-size: 17px;
       }
+
+      .header {
+        flex-direction: column-reverse;
+      }
+
+      .profile-pic {
+        width: min(100%, 300px);
+      }
     }
   </style>
 </head>
 <body>
   <nav>
     <a href="index.html">joshua</a>
-    <a href="projects.html">projects</a>
     <a href="research.html">research</a>
+    <a href="projects.html">projects</a>
     <!-- <a href="blog.html">blog</a> -->
   </nav>
   <main>
-    <h1>Hi, I'm Joshua Chen</h1>
+    <div class="header">
+      <div>
+        <h1>Hi, I'm Joshua Chen</h1>
 
-    <p>
-        joshua86[at]illinois[dot]edu, <a href="https://linkedin.com/in/joshua-chen-267ab7237">linkedin</a>
-    </p>
-    <p>
-        Student pursuing Computer Science + Statistics at UIUC. Interested in applied ml, agent workflows, and causal inference. Check out my <a href="https://github.com/joshuxchn">github</a>!
-    </p>
+        <p>
+            joshua86[at]illinois[dot]edu, <a href="https://linkedin.com/in/joshua-chen-267ab7237">linkedin</a>
+        </p>
+        <p>
+            Student pursuing Computer Science + Statistics at UIUC. Interested in applied ml, agent workflows, and causal inference. Check out my <a href="https://github.com/joshuxchn">github</a>!
+        </p>
+      </div>
+      <img src="profile.jpg" alt="Joshua Chen" class="profile-pic">
+    </div>
+
+    <div class="contrib" id="contrib">
+      <div class="contrib-scroll">
+        <div class="contrib-months"></div>
+        <div class="contrib-grid"></div>
+      </div>
+      <p class="contrib-caption"></p>
+    </div>
 
     <h3>Currently:</h3>
     <ol>
@@ -141,7 +243,7 @@
     <ol>
       <li>Head of Software at TEDxUIUC</li>
       <li>Won <a href="https://devpost.com/software/merj">CalHacks</a> 2025 developer track</li>
-      <li>Research @ OnCARE lab. Post-hallucination interpretability and alignment<li>
+      <li>Research @ OnCARE lab. Post-hallucination interpretability and alignment</li>
       <li>CS124 Course Assistant</li>
     </ol>
     <p></p>
@@ -154,5 +256,84 @@
       <li>v5 climber, tree skier, soccer player</li>
     </ol>
   </main>
+  <div id="contrib-tooltip"></div>
+  <script>
+    (async () => {
+      const container = document.getElementById('contrib');
+      try {
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/joshuxchn?y=last');
+        if (!res.ok) return;
+        const data = await res.json();
+        const days = data.contributions;
+        if (!days || !days.length) return;
+
+        const grid = container.querySelector('.contrib-grid');
+        const months = container.querySelector('.contrib-months');
+        const pad = new Date(days[0].date + 'T00:00:00').getDay();
+        const weekWidth = 14; // 11px cell + 3px gap
+
+        for (let i = 0; i < pad; i++) {
+          grid.appendChild(document.createElement('div'));
+        }
+        days.forEach(d => {
+          const cell = document.createElement('div');
+          cell.className = 'contrib-cell';
+          cell.dataset.level = d.level;
+          cell.dataset.date = d.date;
+          cell.dataset.count = d.count;
+          grid.appendChild(cell);
+        });
+
+        const weeks = Math.ceil((pad + days.length) / 7);
+        const gridWidth = weeks * weekWidth - 3;
+        months.style.minWidth = grid.style.minWidth = gridWidth + 'px';
+
+        days.forEach((d, i) => {
+          const date = new Date(d.date + 'T00:00:00');
+          const week = Math.floor((pad + i) / 7);
+          if (date.getDate() === 1 && week <= weeks - 3) {
+            const label = document.createElement('span');
+            label.textContent = date.toLocaleDateString('en-US', { month: 'short' });
+            label.style.left = week * weekWidth + 'px';
+            months.appendChild(label);
+          }
+        });
+
+        const total = data.total ? Object.values(data.total)[0] : null;
+        if (total !== null) {
+          container.querySelector('.contrib-caption').textContent =
+            total + ' contributions in the last year';
+        }
+
+        container.style.display = 'block';
+        const scroll = container.querySelector('.contrib-scroll');
+        scroll.scrollLeft = scroll.scrollWidth;
+
+        const tooltip = document.getElementById('contrib-tooltip');
+        grid.addEventListener('mouseover', e => {
+          if (!e.target.dataset.date) return;
+          const date = new Date(e.target.dataset.date + 'T00:00:00')
+            .toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+          const n = +e.target.dataset.count;
+          tooltip.textContent = (n === 0 ? 'No contributions' : n + ' contribution' + (n === 1 ? '' : 's')) + ' on ' + date;
+          tooltip.style.display = 'block';
+          const rect = e.target.getBoundingClientRect();
+          const tw = tooltip.offsetWidth;
+          tooltip.style.left = Math.max(8, Math.min(rect.left + rect.width / 2 - tw / 2, window.innerWidth - tw - 8)) + 'px';
+          const top = rect.top - tooltip.offsetHeight - 8;
+          tooltip.style.top = (top < 8 ? rect.bottom + 8 : top) + 'px';
+        });
+        const hideTooltip = () => {
+          tooltip.style.display = 'none';
+        };
+        grid.addEventListener('mouseout', hideTooltip);
+        window.addEventListener('scroll', hideTooltip, { passive: true });
+        scroll.addEventListener('scroll', hideTooltip, { passive: true });
+        document.addEventListener('touchstart', e => {
+          if (!(e.target instanceof Element) || !e.target.classList.contains('contrib-cell')) hideTooltip();
+        }, { passive: true });
+      } catch (e) { /* leave section hidden */ }
+    })();
+  </script>
 </body>
 </html>
