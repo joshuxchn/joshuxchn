@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Chen — Projects</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 15vh 24px 10vh;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 0.8em;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 0.1em;
+      color: #1a1a1a;
+    }
+
+    p {
+      margin-bottom: 1.2em;
+      color: #2a2a2a;
+    }
+
+    ol {
+      padding-left: 1.4em;
+      margin-bottom: 2.2em;
+      color: #2a2a2a;
+    }
+
+    ol li {
+      margin-bottom: 0.3em;
+    }
+
+    ol ol {
+      padding-left: 1.6em;
+      margin-bottom: 0.3em;
+    }
+
+    .project {
+      display: flex;
+      align-items: flex-start;
+      gap: 2em;
+      margin-bottom: 2.5em;
+    }
+
+    .project-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .project-text ol {
+      margin-bottom: 0;
+    }
+
+    .project-media {
+      flex-shrink: 0;
+      width: clamp(300px, 36vw, 380px);
+    }
+
+    .project-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-caption {
+      font-size: 14px;
+      font-style: italic;
+      color: #888;
+      margin-top: 0.4em;
+    }
+
+    a {
+      color: #1a1a1a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.15s;
+    }
+
+    a:hover {
+      opacity: 0.5;
+    }
+
+    .stack {
+      font-style: italic;
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 0.6em;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 24px;
+      display: flex;
+      gap: 1em;
+      font-size: 15px;
+    }
+
+    nav a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      opacity: 0.5;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 12vh 20px 8vh;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      body {
+        font-size: 17px;
+      }
+
+      .project {
+        flex-direction: column;
+      }
+
+      .project-media {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">joshua</a>
+    <!-- <a href="research.html">research</a> -->
+    <a href="projects.html">projects</a>
+    <!-- <a href="blog.html">blog</a> -->
+    <a href="yolo.html">yolo</a>
+  </nav>
+  <main>
+    <h1>Projects</h1>
+
+    <!-- TODO: no "GPT from scratch" project exists in the resume — fill in the real description below. -->
+    <div class="project">
+      <div class="project-media">
+        <img src="assets/gpt.jpg" alt="Laptop open on a table" style="object-position: bottom;">
+        <p class="project-caption">waiting for uber in Calgary</p>
+      </div>
+      <div class="project-text">
+        <h3>GPT from scratch, by hand</h3>
+        <p class="stack">Python, PyTorch &nbsp;·&nbsp; <a href="https://github.com/joshuxchn/neetcode-gpt">github</a></p>
+        <ol>
+          For my learning, no AI.
+        </ol>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-text">
+        <h3>Merj — CalHacks 2025, 1st Place</h3>
+        <p class="stack">Git, Bash, Python, Chroma, JavaScript &nbsp;·&nbsp; <a href="https://devpost.com/software/merj">devpost</a> &nbsp;·&nbsp; <a href="https://github.com/Anay-jo/merj">github</a></p>
+        <ol>
+          A CLI tool for context and user intent aware merge conflict solutions. 
+          <br>$300+ token spend on Claude credits
+          </li>
+        </ol>
+      </div>
+      <div class="project-media">
+        <img src="assets/merj.jpg" alt="View of the Bay Bridge from an office window">
+        <p class="project-caption">view from CodeRabbit's office</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-media">
+        <img src="assets/bananabot.jpg" alt="Banana-bot Discord help page" style="object-position: top;">
+        <p class="project-caption">help page and commands</p>
+      </div>
+      <div class="project-text">
+        <h3>BananaBot</h3>
+        <p class="stack">Python, SQLite, Heroku &nbsp;·&nbsp; <a href="https://github.com/joshuxchn/bananabot">github</a></p>
+        <ol>
+          My first coding project - a little discord bot I built during Covid. <br>Proud to say it was in 60+ servers
+          <br>Built without AI and with StackOverflow :)
+
+        </ol>
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

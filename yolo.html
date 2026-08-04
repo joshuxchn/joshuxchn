@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joshua Chen — blog</title>
+  <title>Joshua Chen — yolo</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
@@ -23,42 +23,22 @@
     }
 
     main {
-      max-width: 840px;
-      margin: 0 auto;
-      padding: 15vh 24px 10vh;
+      margin: 0;
+      padding: 0 0 10vh;
     }
 
     h1 {
       font-size: 28px;
       font-weight: 500;
-      margin-bottom: 0.6em;
       letter-spacing: -0.01em;
+      padding: 14vh 24px 0.8em;
     }
 
-    p {
-      margin-bottom: 1em;
-      color: #2a2a2a;
-    }
-
-    ol {
-      padding-left: 1.4em;
-      color: #2a2a2a;
-    }
-
-    ol li {
-      margin-bottom: 0.4em;
-    }
-
-    a {
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-thickness: 1px;
-      transition: opacity 0.15s;
-    }
-
-    a:hover {
-      opacity: 0.5;
+    .subtitle {
+      font-size: 16px;
+      font-style: italic;
+      color: #888;
+      margin-bottom: 1.8em;
     }
 
     nav {
@@ -81,13 +61,26 @@
       opacity: 0.5;
     }
 
-    @media (max-width: 480px) {
-      main {
-        padding: 12vh 20px 8vh;
-      }
+    .board {
+      display: flex;
+      flex-direction: column;
+    }
 
+    .board img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .board img.crop-top {
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    @media (max-width: 480px) {
       h1 {
         font-size: 24px;
+        padding: 12vh 20px 0.7em;
       }
 
       body {
@@ -105,13 +98,15 @@
     <a href="yolo.html">yolo</a>
   </nav>
   <main>
-    <h1>blog</h1>
-    <p>No writing yet, so here are some of my favorite readings instead:</p>
-    <ol>
-      <li><a href="https://x.com/amytam01/status/2031072399731675269">@amytam01 on X</a></li>
-      <li><a href="https://x.com/amytam01/status/2023593365401636896">@amytam01 on X</a></li>
-    </ol>
+    <h1>yolo</h1>
+
+
+    <div class="board">
+      <img class="crop-top" style="aspect-ratio: 16 / 10;" src="yolo-only-photos/AE239891-0809-4575-9B9A-4AC008A1EBCB_1_102_o.jpeg" alt="Chipotle bowl overlooking a foggy mountain valley">
+      <img class="crop-top" style="aspect-ratio: 1 / 1;" src="yolo-only-photos/56A0CB4A-2F76-4237-8CAA-B4D1CC2C781F_1_105_c.jpeg" alt="Standing on a snowy mountain summit">
+      <img class="crop-top" style="aspect-ratio: 1 / 1;" src="yolo-only-photos/5C1AEFA8-AD2C-4C06-869F-C403FB577CA1_1_105_c.jpeg" alt="Green mountain peaks above the clouds">
+      <img src="yolo-only-photos/481A91FA-3F84-4ACA-87BC-F6E73C7A4507_1_105_c.jpeg" alt="Skiing through a snowy forest">
+    </div>
   </main>
-  <!-- Ideas: scared of stem after failing in high school, the power of being present, what is fear -->
 </body>
 </html>
