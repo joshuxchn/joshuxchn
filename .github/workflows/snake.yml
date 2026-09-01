@@ -26,7 +26,7 @@ jobs:
             dist/github-snake-dark.svg?palette=github-dark&color_snake=#c2a47c&color_dots=#161b22,#4b5146,#626c59,#7b876e,#9aa184
 
       - name: Speed up snake animation
-        run: sed -i -E 's/[0-9]+ms/26000ms/g' dist/*.svg
+        run: sudo sed -i -E 's/[0-9]+ms/26000ms/g' dist/*.svg
 
       - name: Publish SVGs to output branch
         uses: crazy-max/ghaction-github-pages@v4
