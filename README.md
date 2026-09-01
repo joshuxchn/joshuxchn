@@ -7,15 +7,15 @@ CS & Stats @ UIUC
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake-dark.svg"
+    srcset="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake-dark.svg?v=mountain-1"
   />
   <source
     media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake.svg"
+    srcset="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake.svg?v=mountain-1"
   />
   <img
     alt="GitHub contribution snake animation"
-    src="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake.svg"
+    src="https://raw.githubusercontent.com/joshuxchn/joshuxchn/output/github-snake.svg?v=mountain-1"
   />
 </picture>
 
