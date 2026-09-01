@@ -1,4 +1,4 @@
-## Hi there
+## I'm Joshua.
 
 CS & Stats @ UIUC
 
