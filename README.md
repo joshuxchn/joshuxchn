@@ -1,5 +1,3 @@
-## I'm Joshua.
-
 CS & Stats @ UIUC
 
 - Currently working on healthcare/applied ML (OSS Dev @ PyHealth) and AI systems (Intern @ Keiji AI).
