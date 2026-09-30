@@ -1,7 +1,7 @@
 CS & Stats @ UIUC
 
 - Currently working on healthcare/applied ML (OSS Dev @ PyHealth) and AI systems (Intern @ Keiji AI).
-- Interested in AI/ML systems and evaluation
+- Interested in scaling AI systems and safety
 - Portfolio: [joshuxchn.com](https://joshuxchn.com)
 
 <picture>
